@@ -1,0 +1,30 @@
+name: Swag labs
+
+env:
+  PASSWORDS: testpassword=${{ secrets.TESTPASSWORD }}
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - name: Use Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install npm packages
+        run: npm ci
+      - name: Lint project
+        if: always()
+        run: npm run lint
+      - name: Run UI tests
+        if: always()
+        run: ${{ env.PASSWORDS }} npm run test
