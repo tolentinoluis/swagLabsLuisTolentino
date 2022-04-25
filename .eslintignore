@@ -1,0 +1,14 @@
+/dist
+/tmp
+/out-tsc
+
+/node_modules
+
+.vscode/*
+*.launch
+
+/junit/*
+npm-debug.log
+debug.log
+
+.env
