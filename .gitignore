@@ -15,6 +15,7 @@
 npm-debug.log
 debug.log
 /all-logs
+artifacts/
 
 # Environment configuration
 

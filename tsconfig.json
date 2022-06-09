@@ -7,7 +7,7 @@
     "types": [
       "node",
       "webdriverio/async",
-      "@wdio/jasmine-framework",
+      "@wdio/mocha-framework",
       "wdio-image-comparison-service"
     ],
     "paths": {
@@ -22,6 +22,12 @@
       ],
       "@type/*": [
         "./types/*"
+      ],
+      "@services/*": [
+        "./services/*"
+      ],
+      "@constants/*": [
+        "./constants/*"
       ],
     }
   }
