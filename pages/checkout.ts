@@ -50,6 +50,7 @@ export class Checkout extends Base {
     const getText = await (await this.cart.orderCompleteHeader).getText();
     console.log(getText);
     expect(getText).to.contain('THANK YOU FOR YOUR ORDER');
+    expect(getText).to.contain('JAYPEEE');
   }
 
 }
