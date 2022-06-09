@@ -7,7 +7,7 @@ const url = (process.env.APP_URL) ? process.env.APP_URL : 'https://www.saucedemo
 export const config = {
   runner: 'local',
   specs: [
-    './tests/**/*.e2e.ts',
+    './tests/ui/**/*.test.ts',
   ],
   suites: {
     smoke: []
@@ -18,6 +18,7 @@ export const config = {
     maxInstances: 5,
     browserName: 'chrome',
     acceptInsecureCerts: true,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     'goog:chromeOptions': {
       args: [
         '--headless',
@@ -38,7 +39,7 @@ export const config = {
   connectionRetryCount: 3,
   services: [
     ['chromedriver', {
-      // logFileName: 'wdio-chromedriver.log', // default
+      logFileName: 'wdio-chromedriver.log', // default
       outputDir: './all-logs/driver-logs', // overwrites the config.outputDir
       args: ['--silent']
     }],
@@ -64,9 +65,9 @@ export const config = {
         },
       }
     }],
-    ['devtools'],
+
   ],
-  framework: 'jasmine',
+  framework: 'mocha',
   outputDir: 'all-logs',
   reporters: [
     'spec',
@@ -77,9 +78,12 @@ export const config = {
       }
     }]
   ],
-  jasmineOpts: {
-    defaultTimeoutInterval: 60000,
-    requires: ['tsconfig-paths/register']
+  mochaOpts: {
+    ui: 'bdd',
+    timeout: 120000,
+    require: [
+      'tsconfig-paths/register'
+    ]
   },
   before: function (capabilities, specs, browser) {
     // resetting the browser window size to make sure the viewport is the same

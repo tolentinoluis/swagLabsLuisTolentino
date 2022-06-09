@@ -32,6 +32,6 @@ export class Base {
   }
 
   async waitForLoginDefaultPage(): Promise<void> {
-    await (await this.home.appLogo).waitForDisplayed({timeoutMsg: 'Login not successful'});
+    await (await this.home.appLogo).waitForDisplayed({ timeoutMsg: 'Login not successful' });
   }
 }

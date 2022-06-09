@@ -21,10 +21,35 @@ jobs:
         with:
           node-version: '14.x'
       - name: Install npm packages
-        run: npm ci
+        run: yarn ci
       - name: Lint project
         if: always()
-        run: npm run lint
+        run: yarn lint
       - name: Run UI tests
         if: always()
-        run: ${{ env.PASSWORDS }} npm run test
+        run: ${{ env.PASSWORDS }} yarn test-ui
+      - name: Run API tests
+        if: always()
+        run: yarn test-api
+      - name: Slack Notification Successful
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: automation
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Successful run :rocket:'
+          SLACK_TITLE: SwagLabs Automation Results
+          SLACK_USERNAME: gitHubAction
+      - name: Slack Notification Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: automation
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Failed test :collision:'
+          SLACK_TITLE: SwagLabs Automation Results
+          SLACK_USERNAME: gitHubAction

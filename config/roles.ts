@@ -1,6 +1,5 @@
 import 'dotenv/config';
-
-import {ConfigRoles} from '@type/credentials';
+import { ConfigRoles } from '@type/credentials';
 
 const password = process.env.testpassword;
 
