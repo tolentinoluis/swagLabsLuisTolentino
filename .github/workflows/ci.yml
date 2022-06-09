@@ -33,6 +33,8 @@ jobs:
         run: yarn test-api
   slackNotification:
     name: Slack Notification
+    if: ${{ always() }}
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
