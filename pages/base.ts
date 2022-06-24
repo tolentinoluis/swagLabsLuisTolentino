@@ -9,8 +9,8 @@ export class Base {
   async login(credentials: Credentials): Promise<void> {
     console.log('============== Login: Start Login =================');
     await this.openUrl('/');
-    await (await this.base.username).setValue(credentials.USERNAME);
-    await (await this.base.password).setValue(credentials.PASSWORD);
+    await (await this.base.username).setValue(credentials.username);
+    await (await this.base.password).setValue(credentials.password);
 
     await (await this.base.loginBtn).click();
     await this.waitForLoginDefaultPage();

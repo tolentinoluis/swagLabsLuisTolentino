@@ -41,7 +41,6 @@
     "tsconfig-paths": "^3.9.0",
     "typescript": "4.3.5",
     "wdio-chromedriver-service": "^7.3.2",
-    "wdio-image-comparison-service": "^3.0.0",
     "wdio-performancetotal-service": "^2.1.0",
     "wdio-rerun-service": "^1.7.2",
     "wdio-timeline-reporter": "^5.1.4"

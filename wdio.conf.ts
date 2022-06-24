@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-import { join } from 'path';
 
 dotenv.config({ path: './.env' });
 const url = (process.env.APP_URL) ? process.env.APP_URL : 'https://www.saucedemo.com';
@@ -43,29 +42,6 @@ export const config = {
       outputDir: './all-logs/driver-logs', // overwrites the config.outputDir
       args: ['--silent']
     }],
-    ['image-comparison', {
-      // see the full list of options here
-      // https://github.com/wswebcreation/webdriver-image-comparison/blob/master/docs/OPTIONS.md#method-options
-      baselineFolder: join(process.cwd(), './e2e/visual-regression/reference/'),
-      formatImageName: '{tag}_{browserName}_{logName}',
-      screenshotPath: join(process.cwd(), './e2e/visual-regression/'),
-      savePerInstance: true,
-      autoSaveBaseline: true,
-      scaleImageToSize: true,
-      ignoreAntialiasing: true,
-      clearRuntimeFolder: true,
-      tabbableOptions: {
-        circle: {
-          size: 18,
-          fontSize: 18,
-        },
-        line: {
-          color: 'red',
-          width: 3,
-        },
-      }
-    }],
-
   ],
   framework: 'mocha',
   outputDir: 'all-logs',

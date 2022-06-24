@@ -1,13 +1,13 @@
 import 'dotenv/config';
-import { ConfigRoles } from '@type/credentials';
+// import { Credentials } from '@type/credentials';
 
 const password = process.env.testpassword;
 
-export const roles: ConfigRoles = {
+export const roles = {
   USER: {
     STANDARD: {
-      USERNAME: 'standard_user',
-      PASSWORD: password,
+      username: 'standard_user',
+      password: password,
     }
   }
 };
