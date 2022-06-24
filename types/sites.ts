@@ -1,3 +1,6 @@
 export interface Sites {
-  url: string;
+  baseURL: string;
+  sample: string;
+  universityURL: string;
+  tradeMe: string;
 }

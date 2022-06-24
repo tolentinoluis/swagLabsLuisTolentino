@@ -1,7 +1,7 @@
 name: Swag labs
 
 env:
-  PASSWORDS: testpassword=${{ secrets.TESTPASSWORD }}
+  PASSWORDS: testpassword=${{ secrets.TESTPASSWORD }} token=${{ secrets.TOKEN }} tokensecret=${{ secrets.TOKEN_SECRET }} key=${{ secrets.KEY }} keysecret=${{ secrets.KEY_SECRET }}
 
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ jobs:
         run: ${{ env.PASSWORDS }} yarn test-ui
       - name: Run API tests
         if: always()
-        run: yarn test-api
+        run: ${{ env.PASSWORDS }} yarn test-api
       - name: Slack Notification Successful
         if: success()
         uses: rtCamp/action-slack-notify@v2

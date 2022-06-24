@@ -4,7 +4,7 @@ import { Config } from '@config/config';
 export class SampleLuis {
   private readonly sample = Config.sample;
 
-  // return type is an array of BlogPosts
+  // return a random user information in a JSON format
   async getRandomUser(): Promise<AxiosResponse<any>> {
     return await axios
       .get(`${this.sample}/api/`)
